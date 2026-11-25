@@ -48,7 +48,7 @@
     
         <div class="icons">
             <a href="#" class="fas fa-heart"></a>
-            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="#" id="cart-btn" class="fas fa-shopping-cart" aria-label="Abrir carrinho"><span id="cart-count">0</span></a>
             <a href="#" class="fas fa-user"></a>
         </div>
     
@@ -114,7 +114,7 @@
     
     <div class="box-container">
     
-        <div class="box">
+        <div class="box" data-id="arr-img1" data-name="smart tv" data-price="2000" data-img="images/arr-img1.jpg">
             <div class="image">
                 <img src="images/arr-img1.jpg" alt="">
             </div>
@@ -133,12 +133,12 @@
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
     
-        <div class="box">
+        <div class="box" data-id="arr-img2" data-name="video game" data-price="1000" data-img="images/arr-img2.jpg">
             <div class="image">
                 <img src="images/arr-img2.jpg" alt="">
             </div>
@@ -151,18 +151,18 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half"></i> fluat
+                        <i class="fas fa-star-half"></i>
                     </div>
                 </div>
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
     
-        <div class="box">
+        <div class="box" data-id="arr-img3" data-name="calçados" data-price="1000" data-img="images/arr-img3.jpg">
             <div class="image">
                 <img src="images/arr-img3.jpg" alt="">
             </div>
@@ -181,12 +181,12 @@
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
     
-        <div class="box">
+        <div class="box" data-id="arr-img4" data-name="celulares" data-price="1000" data-img="images/arr-img4.jpg">
             <div class="image">
                 <img src="images/arr-img4.jpg" alt="">
             </div>
@@ -205,12 +205,12 @@
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
     
-        <div class="box">
+        <div class="box" data-id="arr-img5" data-name="camisa" data-price="1000" data-img="images/arr-img5.jpg">
             <div class="image">
                 <img src="images/arr-img5.jpg" alt="">
             </div>
@@ -229,12 +229,12 @@
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
     
-        <div class="box">
+        <div class="box" data-id="arr-img6" data-name="alexa" data-price="1000" data-img="images/arr-img6.jpg">
             <div class="image">
                 <img src="images/arr-img6.jpg" alt="">
             </div>
@@ -253,7 +253,7 @@
             </div>
             <div class="overlay">
                 <a href="#" style="--i:1;" class="fas fa-heart"></a>
-                <a href="#" style="--i:2;" class="fas fa-shopping-cart"></a>
+                <a href="#" style="--i:2;" class="fas fa-shopping-cart add-to-cart" aria-label="Adicionar ao carrinho"></a>
                 <a href="#" style="--i:3;" class="fas fa-search"></a>
             </div>
         </div>
@@ -300,7 +300,7 @@
             </div>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, at!</p>
             <strong class="price">R$1000 <span>R$3000</span> </strong>
-            <a href="#"><button class="btn">comprar</button></a>
+            <a href="#"><button class="btn add-to-cart" data-id="watch" data-name="relógios" data-price="1000" data-img="images/watch1.jpg">comprar</button></a>
     
         </div>
     
@@ -630,6 +630,24 @@
     
     
     
+    <!-- cart drawer starts  -->
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-hidden="true">
+        <div class="cart-header">
+            <h3>seu carrinho</h3>
+            <button type="button" id="cart-close" class="fas fa-times" aria-label="Fechar carrinho"></button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>total</span> <strong id="cart-total">R$ 0,00</strong></div>
+            <button type="button" class="btn" id="cart-clear">limpar</button>
+        </div>
+    </aside>
+    <div class="cart-toast" id="cart-toast"></div>
+
+    <!-- cart drawer ends -->
+
     <!-- jquery cdn link  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
